@@ -29,7 +29,7 @@ class _DestinationHomeState extends State<DestinationHome> {
   @override void initState() {
     super.initState();
 
-    if (GetIt.instance.get<HomeViewModel>().events.where((e) => e.isHeadline).length > 1) _startScrollTimer();
+    if (GetIt.instance.get<HomeViewModel>().events.where((e) => e.headline).length > 1) _startScrollTimer();
   }
 
   @override
@@ -58,7 +58,7 @@ class _DestinationHomeState extends State<DestinationHome> {
       HomeViewModel vm = viewModel as HomeViewModel;
 
       //Get events that are headlines to display in the top headline box.
-      var headlines = vm.events.where((event) => event.isHeadline == true).toList();
+      var headlines = vm.events.where((event) => event.headline == true).toList();
 
       //Check if there is an error or if the vm is still fetching data.
       if (!vm.isReady) {
@@ -70,7 +70,7 @@ class _DestinationHomeState extends State<DestinationHome> {
       return CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
-          SliverAppBar.large(
+          vm.headlineImageCache.isNotEmpty ? SliverAppBar.large(
             expandedHeight: 200,
             floating: false,
             pinned: false,
@@ -121,7 +121,7 @@ class _DestinationHomeState extends State<DestinationHome> {
               )
             )),   
             )
-          ),
+          ) : const SliverAppBar(title: Text("Events"), centerTitle: true,),
           SliverPadding(
             padding: const EdgeInsets.all(8),
             sliver: SliverList.builder(

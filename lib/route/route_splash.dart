@@ -3,6 +3,7 @@ import 'package:atc_mobile_app/contracts/api_service_contract.dart';
 import 'package:atc_mobile_app/contracts/local_storage_service_contract.dart';
 import 'package:atc_mobile_app/route/route_main.dart';
 import 'package:atc_mobile_app/services/api_service.dart';
+import 'package:atc_mobile_app/services/azure_api_service.dart';
 //import 'package:atc_mobile_app/services/notification_service.dart';
 import 'package:atc_mobile_app/services/local_storage_service.dart';
 import 'package:atc_mobile_app/view_models/app_hub_view_model.dart';
@@ -38,7 +39,7 @@ class _RouteSplashState extends State<RouteSplash> {
   GetIt getIt = GetIt.instance;
 
   _registerServices() {
-    getIt.registerSingleton<ApiServiceContract>(ApiService());
+    getIt.registerSingleton<ApiServiceContract>(AzureApiService());
     //getIt.registerSingleton<NotificationServiceContract>(NotificationService());
     getIt.registerSingleton<LocalStorageServiceContract>(LocalStorageService());
 

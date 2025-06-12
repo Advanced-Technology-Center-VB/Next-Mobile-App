@@ -25,7 +25,9 @@ class HomeViewModel extends BaseModel {
     try {
       events = await api.fetchEvents();
 
-      for (var event in events.where((event) => event.isHeadline)) {
+      print(events);
+
+      for (var event in events.where((event) => event.headline)) {
         headlineImageCache.add(Image.memory(
           await readBytes(Uri.parse(event.imageUrl ?? "")),
           fit: BoxFit.cover,
