@@ -16,8 +16,8 @@ class ProgramModel {
         'description': String description,
         'about': String about,
         'prerequisites': String prerequisites,
-        'category' : String category
-      } => ProgramModel(id: id, name: name, description: description, about: about, prerequisites: prerequisites, category: category),
+        'category' : Map category
+      } => ProgramModel(id: id, name: name, description: description, about: about, prerequisites: prerequisites, category: category["name"]),
       _ => throw const FormatException("Failed to load Class")
     };
   }

@@ -42,7 +42,7 @@ class AzureApiService extends ApiServiceContract {
 
   @override
   Future<List<ProgramModel>> fetchClasses(int mask) async {
-    final response = await http.get(Uri.parse("http://192.168.50.151:5025/api/v1/classes"));
+    final response = await http.get(Uri.parse("http://192.168.50.151:5025/api/v1/classes?mask=$mask"));
 
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body) as List<dynamic>;
